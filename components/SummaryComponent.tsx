@@ -4,49 +4,9 @@ const SummarizeComponent: React.FC = () => {
   const [paragraph, setParagraph] = useState("");
   const [summary, setSummary] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  // const [characterCount, setCharacterCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const characterCount = paragraph.length > 1000 ? 1000 : paragraph.length;
-  // const [count, setCount] = useState(0);
-
-  //   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //     const paragraph = event.target.value;
-  //    setParagraph(paragraph);
-  //     setCount(paragraph.length);
-  //  };
-
-  // const handleSummarize = () => {
-  //   if (!paragraph) {
-  //     return; // Jika input kosong, jangan melakukan proses ringkasan
-  //   }
-
-  //   // Inisialisasi algoritma untuk pemrosesan bahasa alami (NLP)
-  //   const tokenizer = new natural.WordTokenizer();
-  //   const stemmer = natural.PorterStemmer;
-
-  //   // Proses meringkas teks menggunakan algoritma NLP
-  //   const sentences = tokenizer.tokenize(paragraph);
-  //   const stemmedSentences = sentences.map((sentence) =>
-  //     stemmer.stem(sentence)
-  //   );
-  //   const summarizedText = stemmedSentences.slice(0, 3).join(" ");
-
-  //   setSummary(summarizedText);
-  // };
-
-  // const handleCopyText = () => {
-  //   clipboardCopy(paragraph);
-  //   setIsCopied(true);
-  // };
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const paragraph = event.target.value;
-  //   setParagraph(paragraph.slice(0, 1000));
-  // };
-
-  // useEffect(() => {
-  //   setCharacterCount(paragraph.slice(0, 1000).length);
-  // }, [paragraph]);
+ 
 
   const handleRefresh = () => {
     window.location.reload();
