@@ -30,18 +30,34 @@
 
 // export default Index;
 
-
-import React from 'react';
-import SummarizeComponent from '../components/SummaryComponent';
+import React from "react";
+import SummarizeComponent from "../components/SummaryComponent";
 
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <h1>Website Meringkas Paragraf</h1>
-      <SummarizeComponent />
+
+    <div className="py-10 px-10">
+      <div className="py-5 px-2">
+
+        <h1 className="font-bold text-4xl items-center text-success">
+          Summarizer
+        </h1>
+
+        <p className="text-lg text-gray-500">
+          Summarizer is a tool for summarizing text.
+        </p>
+        
+      </div>
+
+        <SummarizeComponent />
+
+      <footer>
+        <div className="py-5 px-2">
+          <p className="text-sm font-medium text-gray-500 text-right">© 2023 ReexarAI</p>
+        </div>
+      </footer>
     </div>
   );
 };
 
 export default HomePage;
-
