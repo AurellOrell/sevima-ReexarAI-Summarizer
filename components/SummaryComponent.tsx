@@ -14,20 +14,19 @@ const SummarizeComponent: React.FC = () => {
 
   const handleSummarize = () => {
     if (!paragraph) {
-      return; // If input is empty, do not proceed with processing
+      return;
     }
 
     setIsLoading(true);
-
-    // Simulate text summarization process with a timeout
+    
     setTimeout(() => {
-      const sentences = paragraph.split("."); // Split text into sentences
+      const sentences = paragraph.split(".");
       const summarizedText =
         (sentences?.[0] || "").slice(0, 1000) +
         (sentences?.[0]?.length > 1000 ? "..." : "");
       setSummary(summarizedText);
       setIsLoading(false);
-    }, 2000); // Simulated summarization process time (2 seconds)
+    }, 2000); // (2 seconds)
   };
 
   const handleCopyText = () => {
