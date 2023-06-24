@@ -48,6 +48,10 @@ const SummarizeComponent: React.FC = () => {
   //   setCharacterCount(paragraph.slice(0, 1000).length);
   // }, [paragraph]);
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   const handleSummarize = () => {
     if (!paragraph) {
       return; // If input is empty, do not proceed with processing
@@ -142,6 +146,12 @@ const SummarizeComponent: React.FC = () => {
           {summary && (
             <div className="form-control items-end mt-6">
               <div className="justify-end">
+                <button
+                  onClick={handleRefresh}
+                  className="btn btn-accent rounded-full mr-2"
+                >
+                  Generate More
+                </button>
                 <button
                   onClick={handleCopyText}
                   className="btn btn-outline btn-accent rounded-full"
