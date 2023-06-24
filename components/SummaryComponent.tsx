@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import clipboardCopy from "clipboard-copy";
 
 const SummarizeComponent: React.FC = () => {
   const [paragraph, setParagraph] = useState("");
   const [summary, setSummary] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const [characterCount, setCharacterCount] = useState(0);
-
-  //   const [count, setCount] = useState(0);
+  // const [characterCount, setCharacterCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const characterCount = paragraph.length > 1000 ? 1000 : paragraph.length;
+  // const [count, setCount] = useState(0);
 
   //   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
   //     const paragraph = event.target.value;
@@ -15,48 +15,69 @@ const SummarizeComponent: React.FC = () => {
   //     setCount(paragraph.length);
   //  };
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const handleSummarize = () => {
+  //   if (!paragraph) {
+  //     return; // Jika input kosong, jangan melakukan proses ringkasan
+  //   }
+
+  //   // Inisialisasi algoritma untuk pemrosesan bahasa alami (NLP)
+  //   const tokenizer = new natural.WordTokenizer();
+  //   const stemmer = natural.PorterStemmer;
+
+  //   // Proses meringkas teks menggunakan algoritma NLP
+  //   const sentences = tokenizer.tokenize(paragraph);
+  //   const stemmedSentences = sentences.map((sentence) =>
+  //     stemmer.stem(sentence)
+  //   );
+  //   const summarizedText = stemmedSentences.slice(0, 3).join(" ");
+
+  //   setSummary(summarizedText);
+  // };
+
+  // const handleCopyText = () => {
+  //   clipboardCopy(paragraph);
+  //   setIsCopied(true);
+  // };
+
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const paragraph = event.target.value;
+  //   setParagraph(paragraph.slice(0, 1000));
+  // };
+
+  // useEffect(() => {
+  //   setCharacterCount(paragraph.slice(0, 1000).length);
+  // }, [paragraph]);
 
   const handleSummarize = () => {
     if (!paragraph) {
-      return; // Jika input kosong, jangan melakukan proses ringkasan
+      return; // If input is empty, do not proceed with processing
     }
 
     setIsLoading(true);
 
-    // Panggil API atau lakukan proses merangkum paragraf
-    fetch("https://api.example.com/summarize", {
-      method: "POST",
-      body: JSON.stringify({ paragraph }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Setelah mendapatkan hasil dari API atau proses merangkum
-        // paragraf, setSummary() dengan hasilnya dan setIsLoading(false)
-        setSummary(data.summary);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setIsLoading(false);
-      });
+    // Simulate text summarization process with a timeout
+    setTimeout(() => {
+      const sentences = paragraph.split("."); // Split text into sentences
+      const summarizedText =
+        (sentences?.[0] || "").slice(0, 1000) +
+        (sentences?.[0]?.length > 1000 ? "..." : "");
+      setSummary(summarizedText);
+      setIsLoading(false);
+    }, 2000); // Simulated summarization process time (2 seconds)
   };
-  
+
   const handleCopyText = () => {
-    clipboardCopy(paragraph);
+    navigator.clipboard.writeText(summary);
     setIsCopied(true);
   };
 
-  useEffect(() => {
-    setCharacterCount(paragraph.slice(0, 1000).length);
-  }, [paragraph]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const paragraph = event.target.value;
-    setParagraph(paragraph.slice(0, 1000));
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setParagraph(event.target.value);
+    // setParagraph(paragraph.slice(0, 1000));
+    const paragraph = event.target.value.slice(0, 1000);
+    setParagraph(paragraph);
+    setSummary("");
+    setIsCopied(false);
   };
 
   return (
@@ -64,8 +85,21 @@ const SummarizeComponent: React.FC = () => {
       <div className="grid h-50 flex-grow card bg-base-300 rounded-box">
         <div className="py-5 px-3">
           <label className="block">
-            <span className="block text-lg font-medium">
-              Type/paste the text to be summarised *{" "}
+            <span className="flex text-lg font-medium">
+              Type/paste the text to be summarised
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="stroke-success shrink-0 w-6 h-6 ml-1"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
             </span>
           </label>
 
@@ -73,7 +107,7 @@ const SummarizeComponent: React.FC = () => {
             value={paragraph}
             onChange={(e) => setParagraph(e.target.value)}
             // onChange={handleChange}
-            className="textarea textarea-accent textarea-lg w-full max-w-3xl text-sm mt-6"
+            className="textarea textarea-success textarea-lg w-full max-w-3xl text-sm mt-6"
             placeholder="The fox and the owl were always Argumentative. They would often bicker about nonsense things until one day, the owl decided that it was enough. The owl flew up into the sky and declared that from now on, they would only argue when there was something worth arguing about."
             rows={5}
           />
@@ -85,7 +119,7 @@ const SummarizeComponent: React.FC = () => {
             <button
               onClick={handleSummarize}
               disabled={!paragraph}
-              className="btn btn-accent rounded-full "
+              className="btn btn-accent rounded-full text-base"
             >
               Generate
               {isLoading && <p className="loading loading-dots loading-sm"></p>}
@@ -101,21 +135,24 @@ const SummarizeComponent: React.FC = () => {
             <span className="block text-xl font-medium">Results</span>
           </label>
 
-          <form className="border border-accent rounded-lg mt-6">
-          {!isLoading && summary && <p className="py-5 px-4">{summary}</p>}
-          </form>
-
-          <div className="form-control items-end mt-6">
-            <div className="justify-end">
-              <button
-                onClick={handleCopyText}
-                className="btn btn-outline btn-accent rounded-full"
-              >
-                Copy{" "}
-                {isCopied && <span className="text-accent text-md">OK!</span>}
-              </button>
-            </div>
+          <div className="border border-success rounded-lg mt-6">
+            {summary && <p className="py-5 px-4">{summary}</p>}
           </div>
+
+          {summary && (
+            <div className="form-control items-end mt-6">
+              <div className="justify-end">
+                <button
+                  onClick={handleCopyText}
+                  className="btn btn-outline btn-accent rounded-full"
+                >
+                  {isCopied ? "Copied!" : "Copy"}
+                  {/* Copy
+                  {isCopied && <p className="text-success text-md">Copied!</p>} */}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
