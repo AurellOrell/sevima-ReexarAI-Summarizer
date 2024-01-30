@@ -4,7 +4,7 @@
 
 ## Deskripsi Proyek
 
-Proyek ini dikembangkan sebagai bagian dari aplikasi beasiswa SEVIMA. AI Summarizer bertujuan untuk memberikan solusi otomatisasi dalam merangkum teks berdasarkan kecerdasan buatan (AI). Pengguna dapat menggantikan proses manual merangkum dokumen atau artikel dengan menggunakan algoritma pemrosesan bahasa alami.
+Proyek ini dikembangkan sebagai bagian dari beasiswa SEVIMA. AI Summarizer bertujuan untuk memberikan solusi otomatisasi dalam merangkum teks berdasarkan kecerdasan buatan (AI). Pengguna dapat menggantikan proses manual merangkum dokumen atau artikel dengan menggunakan algoritma pemrosesan bahasa alami.
 
 ## Fitur Utama
 
