@@ -1,5 +1,30 @@
 # reexar
 
+**README - AI Summarizer (TSX)**
+
+## Deskripsi Proyek
+
+Proyek ini dikembangkan sebagai bagian dari aplikasi beasiswa SEVIMA. AI Summarizer bertujuan untuk memberikan solusi otomatisasi dalam merangkum teks berdasarkan kecerdasan buatan (AI). Pengguna dapat menggantikan proses manual merangkum dokumen atau artikel dengan menggunakan algoritma pemrosesan bahasa alami.
+
+## Fitur Utama
+
+1. **Summarization Otomatis:** Algoritma kecerdasan buatan secara otomatis merangkum teks panjang menjadi ringkasan yang mudah dipahami.
+
+2. **Teks Multibahasa:** Dukungan untuk pemrosesan teks dalam berbagai bahasa untuk memenuhi kebutuhan pengguna global.
+
+3. **Antarmuka Pengguna Intuitif:** Desain antarmuka pengguna yang bersahabat untuk memudahkan penggunaan oleh semua lapisan masyarakat.
+
+4. **Ekspor Ringkasan:** Pengguna dapat menyimpan atau berbagi ringkasan hasil pemrosesan sesuai kebutuhan.
+
+
+## Kontribusi
+
+Jika Anda ingin berkontribusi pada pengembangan proyek ini, silakan buat *pull request* melalui [GitHub](https://github.com/AurellOrell/repo/pulls). Kontribusi dalam bentuk perbaikan bug, peningkatan fitur, atau dokumentasi sangat dihargai.
+
+Terima kasih telah menggunakan AI Summarizer (TSX)! Jika Anda memiliki pertanyaan atau saran, silakan buka [Issues](https://github.com/AurellOrell/repo/issues). Semoga proyek ini memberikan kontribusi positif dalam aplikasi beasiswa SEVIMA.
+
+##
+
 🎉 Congratulations, your project was successfully generated with [Create Next Stack](https://www.create-next-stack.com/)!
 
 To get started, run:
